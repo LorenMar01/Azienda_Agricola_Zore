@@ -283,9 +283,9 @@ const DataTable = ({ data }) => {
                 <td className='col-medium'>{item.produzione_latte.quantita_totale_litri}</td>
                 <td className='col-medium'>{item.produzione_latte.media_per_capra_litri}</td>
                 
-                <td className='col-medium'>{getSaleValueForRender(item, 'Produzione Casearia', 'formaggio')}</td>
-                <td className='col-medium'>{getSaleValueForRender(item, 'Produzione Casearia', 'yogurt')}</td>
-                <td className='col-medium'>{getSaleValueForRender(item, 'Produzione Casearia', 'ricotta')}</td>
+                <td className='col-medium'>{getCaseariaValueForRender(item, 'formaggio')}</td>
+				<td className='col-medium'>{getCaseariaValueForRender(item, 'yogurt')}</td>
+				<td className='col-medium'>{getCaseariaValueForRender(item, 'ricotta')}</td>
                 
                 <td className='col-medium'>{item.alimentazione.quantita_foraggio_kg}</td>
                 <td className='col-wide'>{item.alimentazione.rapporto_latte_foraggio}</td>
