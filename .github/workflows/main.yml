@@ -1,0 +1,42 @@
+# File: .github/workflows/genera_dati.yml
+
+name: Genera dati randomizzati per riprodurre scenari realistici che riflettano condizioni ambientali e produttive per l'Azienda Agricola Zore
+on:
+  # Trigger: Esegui questo workflow quando si effettua un 'push' sul branch 'main'
+  push:
+    branches: [ main ]
+  # Trigger manuale: Permette di lanciare il workflow dalla pagina 'Actions' di GitHub
+  workflow_dispatch:
+
+jobs:
+  run-simulation:
+    runs-on: ubuntu-latest # Il Runner (server virtuale) che userà GitHub
+
+    permissions:
+      contents: write # Concede al GITHUB_TOKEN il permesso di scrivere i contenuti
+    
+    steps:
+    - name: 1. Checkout del codice
+      uses: actions/checkout@v4
+      
+    - name: 2. Configurazione Node.js 
+      # Questa è l'azione che installa Node.js sul server virtuale
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20' 
+        
+    - name: 3. Installazione dipendenze NPM
+      # Esegui npm install nella directory del progetto
+      run: npm install
+      working-directory: javascript_creazione_dati_simulati
+      
+    - name: 4. Esecuzione dello script JavaScript
+      # Lancia il tuo script Node.js
+      run: node javascript_creazione_dati_simulati/lancia_con_giorni_costante.js
+      
+    - name: 5. Committa il file generato nel repository  
+      uses: stefanzweifel/git-auto-commit-action@v5
+      with:
+        commit_message: "Aggiorna dati simulati generati dal workflow"
+        file_pattern: 'public/dati_azienda_zore.json'
+        push_options: '--force-with-lease'
