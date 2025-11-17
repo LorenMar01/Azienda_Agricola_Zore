@@ -47,6 +47,18 @@ header {
   color: #888; 
 }
 
+/* Stile per la dicitura: piccola, a destra e discreta */
+.data-disclaimer-bottom-right {
+  text-align: right; 
+  /* Stili per renderlo PICCOLO e POCO EVIDENTE */
+  font-size: 0.90em; 
+  color: #999;     
+  font-style: italic; 
+  margin-top: 5px; 
+  margin-bottom: 0; 
+  padding: 0 5px; 
+}
+
 /* Contenitore generale per la dashboard, usa flexbox per un layout flessibile */
 .dashboard-container {
   display: flex; 

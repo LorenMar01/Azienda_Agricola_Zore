@@ -98,7 +98,7 @@ const Dashboard = ({ data, isDefaultDateRange }) => {
 	
     return (
       <div className="dashboard-container">
-        
+	  
         {/* GRAFICO 1: Produzione Latte (Totale e Media) */}
         <div className="chart-wrapper">
           <h3>Produzione Latte (litri) - {singleDayData.data}{defaultDateLabel}</h3>

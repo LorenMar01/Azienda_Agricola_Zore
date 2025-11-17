@@ -249,6 +249,11 @@ function App() {
       <header>
         {/* Logo dell'azienda agricola */}
         <img src={logo} alt="Logo Azienda Agricola Zore" className="header-logo" />
+		
+        <p className="data-disclaimer-bottom-right">
+          **Attenzione:** I dati mostrati sono **casuali** e non rappresentano operazioni reali.
+        </p>
+		
       </header>
       <main>
         {/* Controlli per i filtri e la visualizzazione */}
