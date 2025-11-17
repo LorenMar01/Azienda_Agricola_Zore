@@ -7,11 +7,6 @@ import {
 // Componente funzionale Dashboard che riceve i dati e la prop per il range di date
 const Dashboard = ({ data, isDefaultDateRange }) => {
   
-  // Se non ci sono dati o l'array è vuoto, mostra un messaggio
-  if (!data || data.length === 0) {
-    return <p>Nessun dato da visualizzare.</p>;
-  }
-
   // Funzione di formattazione della data
   const formatItalianDate = (dateString) => {
     const [year, month, day] = dateString.split('-');
