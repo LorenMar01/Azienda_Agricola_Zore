@@ -144,7 +144,13 @@ const DataTable = ({ data }) => {
     const sale = item.vendite.find(p => p.canale_vendita === canaleVendita);
     return sale?.[field] || 'N/A';
   };
-  
+
+  // Funzione per trovare la produzione casearia
+  const getCaseariaValueForRender = (item, tipoProdotto) => {
+    const produzione = item.produzione_casearia.find(p => p.tipo_prodotto === tipoProdotto);
+    return produzione?.quantita_kg || 'N/A';
+  };
+	
   // Funzione helper per formattare la data nel formato per la visualizzazione Italiana
   const formatItalianDate = (dateString) => {
     const [year, month, day] = dateString.split('-');
