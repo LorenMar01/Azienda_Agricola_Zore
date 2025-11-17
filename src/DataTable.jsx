@@ -148,7 +148,11 @@ const DataTable = ({ data }) => {
   // Funzione per trovare la produzione casearia
   const getCaseariaValueForRender = (item, tipoProdotto) => {
     const produzione = item.produzione_casearia.find(p => p.tipo_prodotto === tipoProdotto);
-    return produzione?.quantita_kg || 'N/A';
+    const value = produzione?.quantita_kg;
+    if (value === undefined || value === null) {
+      return 'N/A';
+    }
+    return value.replace('.', ',');
   };
 	
   // Funzione helper per formattare la data nel formato per la visualizzazione Italiana
