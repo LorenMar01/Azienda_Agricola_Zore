@@ -23,6 +23,8 @@ function App() {
   const [dati, setDati] = useState([]);
   // Stato per memorizzare i dati filtrati, che verranno passati a Dashboard o DataTable
   const [datiFiltrati, setDatiFiltrati] = useState([]);
+  // Stato controlla se i dati sono ancora in fase di caricamento
+  const [isLoading, setIsLoading] = useState(true); 
   // Stato per controllare la visibilità del pannello dei filtri
   const [showFilters, setShowFilters] = useState(false);
   // Stato per controllare la visibilità della tabella (true = mostra tabella, false = mostra dashboard)
@@ -61,27 +63,30 @@ function App() {
 
   // Variabile per verificare se l'intervallo di date è quello di default
   const isDefaultDateRange = filtri.dataDa === defaultDataDa && filtri.dataA === defaultDataA;
-
-  // Caricamento dei dati dal file JSON 
+  
+  // Caricamento dei dati dal file JSON (MODIFICATO)
   useEffect(() => {
     const caricaDati = async () => {
       try {
-        // File di input
+		// File di input
         const response = await fetch('/dati_azienda_zore.json');
-        // Parsifica la risposta JSON
+        if (!response.ok) {
+          throw new Error('Errore nel caricamento del file JSON.');
+        }
+        // Parsifica la risposta JSON e aggiorna lo stato 'dati' con i dati caricati
         const datiJson = await response.json();
-        // Aggiorna lo stato 'dati' con i dati caricati
         setDati(datiJson);
         console.log('Dati caricati con successo:', datiJson);
       } catch (error) {
         // Gestisce eventuali errori durante il caricamento dei dati
         console.error('Errore nel caricamento dei dati:', error);
-      }
+        } finally {
+          // Imposta isLoading a false in ogni caso (successo o fallimento)
+          setIsLoading(false); 
+          }
     };
-
-    // Funzione per caricare i dati
     caricaDati(); 
-  }, []); 
+  }, []);
 
   // Filtra i dati ogni volta che i dati originali o i filtri cambiano
   useEffect(() => {
@@ -224,6 +229,20 @@ function App() {
     });
   };
 
+  // Se i dati sono ancora in caricamento, mostra un messaggio di attesa, ma mantieni la testata
+  if (isLoading) {
+    return (
+      <div className={`app-container ${showTable ? 'table-background' : 'dashboard-background'}`}>
+        <header>
+          <img src={logo} alt="Logo Azienda Agricola Zore" className="header-logo" />
+        </header>
+        <main>
+          <h2>Caricamento Dati in corso...</h2>
+        </main>
+      </div>
+    );
+  }
+  
   return (
     // Contenitore principale dell'applicazione con sfondo dinamico
     <div className={`app-container ${showTable ? 'table-background' : 'dashboard-background'}`}>

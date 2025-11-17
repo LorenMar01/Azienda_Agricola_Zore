@@ -26,11 +26,7 @@ const DataTable = ({ data }) => {
   // Stato per la configurazione dell'ordinamento
   const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' });
 
-  if (!data || data.length === 0) {
-    return <p>Nessun dato da visualizzare.</p>;
-  }
-
-// Funzione helper per ottenere il valore di una cella, gestendo le chiavi annidate
+  // Funzione helper per ottenere il valore di una cella, gestendo le chiavi annidate
   const getCellValue = (item, key) => {
 	// Funzione interna per estrarre il valore dai dati di vendita
     const getSaleValue = (canaleVendita, field) => {
