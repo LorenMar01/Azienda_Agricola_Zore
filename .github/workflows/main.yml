@@ -1,13 +1,16 @@
-# File: .github/workflows/genera_dati.yml
-
 name: Genera dati randomizzati per riprodurre scenari realistici che riflettano condizioni ambientali e produttive per l'Azienda Agricola Zore
 on:
-  # Trigger: Esegui questo workflow quando si effettua un 'push' sul branch 'main'
-  push:
-    branches: [ main ]
   # Trigger manuale: Permette di lanciare il workflow dalla pagina 'Actions' di GitHub
   workflow_dispatch:
 
+  # Trigger Schedulato: Esegue il workflow ogni giorno alle 02:00 AM (Ora Italiana)
+  # CRON: '0 1 * * *' -> Minuto 0, Ora 1 (UTC) = 02:00 AM (CET/CEST)
+  #schedule:
+  #  - cron: '0 1 * * *'
+  # Conversione in UTC (CET è UTC+1): $17:42 - 1$ ora $= 16:42
+  # codice CRON sarà quindi 42 16 * * *
+  schedule:
+    - cron: '45 16 * * *'
 jobs:
   run-simulation:
     runs-on: ubuntu-latest # Il Runner (server virtuale) che userà GitHub
@@ -31,7 +34,7 @@ jobs:
       working-directory: javascript_creazione_dati_simulati
       
     - name: 4. Esecuzione dello script JavaScript
-      # Lancia il tuo script Node.js
+      # Lancia lo script Node.js
       run: node javascript_creazione_dati_simulati/lancia_con_giorni_costante.js
       
     - name: 5. Committa il file generato nel repository  
