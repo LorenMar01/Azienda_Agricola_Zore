@@ -1,0 +1,198 @@
+/* Stili globali per l'elemento #root */
+#root {
+  width: 100%; /* Imposta la larghezza al 100% della viewport */
+  max-width: none; /* Rimuove il limite massimo di larghezza */
+  margin: 0; /* Rimuove il margine automatico */
+  padding: 2rem; /* Mantiene lo spazio interno */
+}
+
+/* Stili per l'header dell'applicazione */
+header {
+  width: 100%; 
+  align-items: center; 
+  padding: 10px; 
+}
+
+/* Stili per l'immagine del logo all'interno dell'header */
+.header-logo {
+  width: 100%; 
+  height: auto; 
+  display: block; 
+}
+
+/* Definizione dell'animazione per la rotazione del logo */
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg); 
+  }
+  to {
+    transform: rotate(360deg); 
+  }
+}
+
+/* Applica l'animazione: infinita, 20 secondi, velocità costante */
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear; 
+  }
+}
+
+/* Spazio interno per le schede */
+.card {
+  padding: 2em; 
+}
+
+/* Stili per i link con classe "read-the-docs" */
+.read-the-docs {
+  color: #888; 
+}
+
+/* Contenitore generale per la dashboard, usa flexbox per un layout flessibile */
+.dashboard-container {
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 20px; 
+}
+
+/* Wrapper per ogni singolo grafico o componente all'interno della dashboard */
+.chart-wrapper {
+  flex: 1 1 45%; /* Due grafici affiancati su schermi grandi */
+  background-color: #f9f9f9; 
+  padding: 20px; 
+  border-radius: 8px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); 
+}
+
+/* Wrapper specifico per grafici che devono occupare l'intera larghezza su desktop */
+.chart-wrapper.full-width {
+  flex: 1 1 100%; /* Forza l'elemento ad occupare l'intera larghezza (100%) */
+}
+
+/* Stili per i titoli dei grafici */
+.chart-wrapper h3 {
+  text-align: center; 
+  color: #555; 
+}
+
+/* --- Stili per i controlli dei filtri --- */
+.filter-controls {
+  margin-bottom: 20px; 
+  display: flex; 
+  gap: 10px; 
+  align-items: center;
+
+}
+
+/* Stili di base per i pulsanti dei filtri */
+.filter-controls button {
+  padding: 8px 12px; 
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
+  cursor: pointer; 
+  background-color: #f0f0f0; 
+}
+
+/* Stili per i pulsanti dei filtri al passaggio del mouse */
+.filter-controls button:hover {
+  background-color: #e0e0e0; 
+}
+
+/* Stili per il pannello di filtraggio */
+.filters-container {
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 20px; 
+  padding: 20px; 
+  border: 1px solid #ccc; 
+  border-radius: 8px; 
+  margin-bottom: 20px; 
+  background-color: #fafafa; 
+}
+
+/* Stili per il titolo principale del pannello dei filtri */
+.filters-container h3 {
+  width: 100%; 
+  margin-top: 0; 
+}
+
+/* Stili per ogni singolo gruppo di filtri (es. "Condizioni Ambientali") */
+.filter-group {
+  display: flex; 
+  flex-direction: column; 
+  gap: 5px; 
+  padding: 10px; 
+  border: 1px solid #eee; 
+  border-radius: 4px; 
+}
+
+/* Stili per i titoli dei gruppi di filtri */
+.filter-group h4 {
+  margin: 0 0 10px 0; 
+  color: #333; 
+}
+
+/* Stile per lo sfondo quando è attiva la visualizzazione della dashboard (grafici) */
+.dashboard-background {
+  background-color: #e0ffe0; 
+  transition: background-color 0.5s ease-in-out; 
+}
+
+/* Stile per lo sfondo quando è attiva la visualizzazione della tabella */
+.table-background {
+  background-color: #ffffa0; 
+  transition: background-color 0.5s ease-in-out; 
+}
+
+/* Assicura che il contenitore occupi almeno l'intera altezza della viewport */
+.app-container {
+  min-height: 100vh; 
+  /* ZOOM 75% */
+  transform: scale(0.75);
+  transform-origin: top center; /* Applica la trasformazione partendo dall'alto e centrato */
+  width: 133.33%; /* Calcola la larghezza necessaria (100% / 0.75) per riempire lo schermo */
+  margin: 0 auto; /* Centra il contenitore escalato */
+}
+
+.default-date-label {
+  font-weight: bold;
+  color: #555; 
+  font-size: 0.9em;
+  margin-left: 10px; 
+}
+
+/* Spazio tra il titolo e la scritta */
+.chart-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Per eventuale utilizzo su dispositivi mobili */
+@media (max-width: 768px) {
+  /* Forziamo tutti i grafici ad occupare l'intera larghezza su schermi piccoli */
+  .chart-wrapper {
+    flex: 1 1 100%; 
+  }
+  
+  /* I controlli possono andare a capo se lo spazio è limitato */
+  .filter-controls {
+    flex-wrap: wrap; 
+  }
+  
+  /* I gruppi di filtri si allineano in colonna per schermi verticali */
+  .filters-container {
+      flex-direction: column; 
+  }
+  
+  /* Riduci il padding generale per massimizzare lo spazio sullo schermo */
+  #root {
+    padding: 1rem;
+  }
+  
+  /* Annulamento "ZOOM" sui dispositivi mobili per la massima leggibilità */
+  .app-container {
+      transform: none !important; /* Rimuove lo zoom forzato */
+      width: 100% !important; /* Ripristina la larghezza normale */
+      margin: 0 !important; /* Rimuove il margine */
+  }
+}

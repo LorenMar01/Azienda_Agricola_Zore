@@ -1,0 +1,150 @@
+/* Stili per il contenitore principale della tabella */
+.table-container {
+  margin-top: 5px; 
+  /* Contenitore di scorrimento ORRIZZONTALE UNICO */
+  overflow-x: auto; 
+  /* Imposta un'altezza massima per il contenitore per dare un limite visivo */
+  max-height: 600px; 
+  /* Nasconde lo scroll verticale dal contenitore esterno */
+  overflow-y: hidden; 
+}
+
+/* Contenitore per il titolo e il pulsante di download a destra */
+.table-header-controls {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 0 10px; 
+}
+
+/* Stili per il titolo della tabella nel nuovo container */
+.table-header-controls h2 {
+  text-align: center; 
+  margin-bottom: 0; 
+}
+
+/* Stili per il pulsante di download */
+.download-button {
+  background-color: #007bff; 
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9em;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.download-button:hover {
+  background-color: #0056b3;
+}
+
+/* Stili per l'intestazione della tabella (<th>) */
+.table-container th {
+  /* Imposta lo stile dell'intestazione */
+  background-color: #009879; 
+  color: #ffffff; 
+  /* Questo fissa l'intestazione quando si scorre verticalmente il <tbody> */
+  position: sticky; 
+  top: 0; 
+  z-index: 10; 
+  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4); 
+}
+
+/* Stili generali per l'elemento <table> */
+table {
+  /* Forza la larghezza minima per attivare lo scorrimento orizzontale sincronizzato */
+  min-width: 2500px; 
+  table-layout: fixed;
+  width: auto; 
+  border-collapse: collapse; 
+  margin-bottom: 0; 
+  font-size: 0.9em; 
+  font-family: sans-serif; 
+}
+
+/* Forza il THEAD a comportarsi come una riga di tabella */
+table thead {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+/* Stili per il corpo della tabella (tbody) */
+table tbody {
+  /* Questo gestisce lo scroll VERTICALE */
+  display: block; /* Essenziale per poter applicare un'altezza fissa/scroll al tbody */
+  max-height: 550px; /* L'altezza massima del *solo* corpo della tabella. Regola questo valore! */
+  overflow-y: auto; /* Abilita lo scroll verticale sul corpo */
+  overflow-x: hidden; 
+    
+  /* Sottrae lo spazio occupato dalla scrollbar verticale (circa 15px) */
+  width: calc(100% - 15px); 
+}
+
+/* Stili per le righe del corpo della tabella */
+table tbody tr {
+  /* Essenziale per l'allineamento quando tbody ha display: block */
+  display: table;
+  width: 100%; 
+  table-layout: fixed;
+  border-bottom: 1px solid #dddddd;
+}
+
+
+/* Stili per la riga dell'intestazione della tabella */
+table thead tr {
+  text-align: left;
+}
+
+/* Stili per le celle dell'intestazione (<th>) e le celle del corpo (<td>) */
+table th,
+table td {
+  padding: 12px 15px; 
+  border: 1px solid #dddddd; /* Aggiunto bordo per distinguere meglio le celle */
+  text-align: center;
+}
+
+/* Stile specifico per TH: Abilita il wrapping e aggiunge allineamento verticale */
+table thead th {
+  white-space: normal; /* PERMETTE al testo di andare a capo (wrap) */
+  vertical-align: middle; /* Allinea il testo verticalmente al centro */
+  height: auto; /* L'altezza si adatterà al contenuto */
+  line-height: 1.2;
+}
+
+/* Stile per i dati: Mantiene nowrap per i valori brevi (opzionale) */
+table tbody td {
+  white-space: nowrap; 
+}
+
+/* Le seguenti classi sono applicate sia a <th> che a <td> */
+.col-data {
+  width: 100px;
+  min-width: 100px;
+}
+.col-small {
+  width: 85px;
+  min-width: 85px;
+}
+.col-medium {
+  width: 130px;
+  min-width: 130px;
+}
+.col-wide {
+  width: 160px;
+  min-width: 160px;
+}
+
+/* Stili per le righe pari del corpo della tabella (per un effetto a strisce) */
+table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+/* Stili per l'ultima riga del corpo della tabella */
+table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}

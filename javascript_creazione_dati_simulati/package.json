@@ -1,0 +1,15 @@
+{
+  "name": "generazione_dati_azienda_agricola_zore",
+  "version": "1.0.0",
+  "description": "Generazione Dati Simulati Azienda Agricola Zore",
+  "main": "simulate.js",
+  "keywords": [],
+  "author": "Marta Lorenzon",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "node lancia_con_giorni_costante.js"
+  },
+  "dependencies": {
+    "recharts": "^3.1.0"
+  }
+}
