@@ -2,7 +2,7 @@
 
 ## Panoramica del Progetto
 
-Questo repository contiene il codice sorgente completo per la **Dashboard Analitica Interattiva**, realizzata come elaborato per la Tesi di Laurea in **INFORMATICA PER LE AZIENDE DIGITALI (L-31)**.
+Questo repository contiene il codice sorgente completo per la **Dashboard Analitica Interattiva**, realizzata come project work per il corso di Laurea in **INFORMATICA PER LE AZIENDE DIGITALI (L-31)**.
 
 L'obiettivo principale del progetto è supportare l'Azienda Agricola Zore nei processi di digitalizzazione e nel monitoraggio delle performance aziendali, trasformando dati grezzi simulati (relativi a quattro macro-aree: Ambientale, Animale, Produttiva e Commerciale) in **Key Performance Indicators (KPI)** chiari e sintetici, immediatamente interpretabili.
 
