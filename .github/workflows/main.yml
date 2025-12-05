@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
 
   # Trigger Schedulato: Esegue il workflow ogni giorno alle 02:00 AM (Ora Italiana)
-  # CRON: '0 1 * * *' -> Minuto 0, Ora 1 (UTC) = 02:00 AM (CET/CEST)
+  # CRON: '0 0 * * *' -> Minuto 0, Ora 1 (UTC) = 02:00 AM (CET/CEST)
   schedule:
-    - cron: '0 1 * * *'
+    - cron: '0 0 * * *'
 
 jobs:
   run-simulation:
